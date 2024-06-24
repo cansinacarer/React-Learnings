@@ -1,20 +1,32 @@
 import "./App.css";
+import { useEffect, useState } from "react";
 
-const [firstCity, second] = [
-  "Tokyo",
-  "Tahoe City",
-  "Bend"
-];
+function App() {
+	const [emotion, setEmotion] = useState("happy");
 
-console.log(firstCity);
-console.log(second);
+	const buttonStyle = {
+		padding: "20px",
+	};
 
-function App({ library }) {
-  return (
-    <div className="App">
-      <h1>Hello from {library}</h1>
-    </div>
-  );
+	useEffect(() => {
+		console.log(`It's ${emotion} now.`);
+	}, [emotion]);
+
+	function toggleEmotion() {
+		if (emotion === "happy") {
+			setEmotion("sad");
+		} else {
+			setEmotion("happy");
+		}
+	}
+	return (
+		<div className="App">
+			<h1>Hello from {emotion} guy!</h1>
+			<button onClick={toggleEmotion} style={buttonStyle}>
+				Make it sad
+			</button>
+		</div>
+	);
 }
 
 export default App;

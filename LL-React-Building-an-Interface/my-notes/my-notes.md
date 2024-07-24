@@ -53,7 +53,7 @@ We can organize components with directories in the `src` directory. E.g. we can 
 import { BiSearch, BiCaretDown } from "react-icons/bi";
 
 const Search = () => {
-	return <div className="py-5">// ...</div>;
+	return <div className="py-5">...</div>;
 };
 
 export default Search;

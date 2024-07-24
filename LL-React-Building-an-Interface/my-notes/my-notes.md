@@ -1,6 +1,6 @@
 # React.js: Building an Interface
 
-## Icons
+## Installing an Icon Pack
 
 You can use [React Icons](https://react-icons.github.io/react-icons/), which only import the icons you use.
 
@@ -16,7 +16,7 @@ You can use [React Icons](https://react-icons.github.io/react-icons/), which onl
 
     `<BiAlarm className="inline-block" />`
 
-## Tailwind
+## Installing Tailwind
 
 Unlike bootstrap, which adds many unused classes, tailwind only includes the classes you use.
 
@@ -43,3 +43,13 @@ We also used a plugin for forms:
 Similar to Bootstrap, grid begins with a container outside. E.g.:
 
 `<div className="App container mx-auto mt-40 font-thin">`
+
+Then you can start adding the classes to components and elements.
+
+## Creating components
+
+We can organize components with directories in the `src` directory.
+
+E.g. we can make a `components` folder and a `Search.js` component in it.
+
+> Component names should be upper case!

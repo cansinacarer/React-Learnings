@@ -257,3 +257,17 @@ To change classes based on a binary state, you can use a tertiary statement:
 className={`bg-blue-400 text-white px-2 py-3 w-full text-left
                     ${toggleForm ? "rounded-t-md" : "rounded-md"} `}
 ```
+
+### Working with data from an external source
+
+To simulate external source as an example, we'll put appointment-data.js in the public directory and load it from its url.
+
+1. We'll need to import these:
+    ```jsx
+    import { useState, useEffect, useCallback } from "react";
+    ```
+2. A state for the appointment list:
+    ```jsx
+    let [appointmentList, setAppointmentList] = useState([]);
+    ```
+3.

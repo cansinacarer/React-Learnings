@@ -180,4 +180,80 @@ document.querySelector("body").classList.add("bg-background", "text-text");
 document.documentElement.classList.toggle("dark");
 ```
 
-[WHERE I LEFT](https://www.linkedin.com/learning/react-js-building-an-interface-8551484/passing-data-to-a-component?autoSkip=true&resume=false&u=2174970)
+## Passing Data to Components
+
+From the parent component, you can read a json file and pass it to the child:
+
+```jsx
+import appointmentList from "./appointment-data.json";
+import AppointmentInfo from "./components/AppointmentInfo";
+
+// ...inside the parent component
+<ul className="divide-y divide-gray-200">
+	{appointmentList.map((appointment) => (
+		<AppointmentInfo appointment={appointment} />
+	))}
+</ul>;
+```
+
+Then in the child components:
+
+1. **You must have curly braces around the component function arg to get the passed data!** (i.e. destructuring)
+    ```jsx
+    const AppointmentInfo = ({ appointment }) => {
+        return (
+        )
+    }
+    ```
+2. Then you can read the child items:
+
+    ```jsx
+    <li>{appointment.aptDate}</li>
+    ```
+
+3. We also had to add a key when we are using the component:
+    ```jsx
+    <AppointmentInfo appointment={appointment} />
+    ```
+
+## useState Hook and Conditional Classes
+
+We can have a state that holds the state of whether the form is shown.
+
+1. Import useState
+    ```jsx
+    import { useState } from "react";
+    ```
+2. Define the variable that holds the state and the setter function:
+    ```jsx
+    // If we wanted to set a different initial value, we would put it in place of false
+    let [toggleForm, setToggleForm] = useState(false);
+    ```
+3. Then you can do conditional rendering based on this state as below.
+4. You can toggle the state with a button that calls the setter function:
+    ```jsx
+    <button
+        onClick={() => {
+            setToggleForm(!toggleForm);
+        }}
+    >
+    ```
+
+### Conditional rendering
+
+You can use the following pattern to conditionally render a section based on the truthiness of a state:
+
+```jsx
+{toggleForm && (
+    // whatever conditional jsx I need to render
+)}
+```
+
+### Conditional classes
+
+To change classes based on a binary state, you can use a tertiary statement:
+
+```jsx
+className={`bg-blue-400 text-white px-2 py-3 w-full text-left
+                    ${toggleForm ? "rounded-t-md" : "rounded-md"} `}
+```

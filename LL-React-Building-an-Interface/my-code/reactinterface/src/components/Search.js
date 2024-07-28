@@ -1,4 +1,5 @@
 import { BiSearch, BiCaretDown, BiCheck } from "react-icons/bi";
+import { useState } from "react";
 
 const DropDown = () => {
 	return (
@@ -48,6 +49,8 @@ const DropDown = () => {
 };
 
 const Search = () => {
+	let [searchDropDownToggle, setSearchDropDownToggle] = useState(false);
+
 	return (
 		<div className="py-5">
 			<div className="mt-1 relative rounded-md shadow-sm">
@@ -71,10 +74,13 @@ const Search = () => {
 							id="options-menu"
 							aria-haspopup="true"
 							aria-expanded="true"
+							onClick={() =>
+								setSearchDropDownToggle(!searchDropDownToggle)
+							}
 						>
 							Sort By <BiCaretDown className="ml-2" />
 						</button>
-						<DropDown />
+						{searchDropDownToggle && <DropDown />}
 					</div>
 				</div>
 			</div>

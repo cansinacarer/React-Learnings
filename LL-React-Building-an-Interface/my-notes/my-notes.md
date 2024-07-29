@@ -270,4 +270,54 @@ To simulate external source as an example, we'll put appointment-data.js in the 
     ```jsx
     let [appointmentList, setAppointmentList] = useState([]);
     ```
-3.
+3. useCallback for fetching the data
+
+    ```jsx
+    const fetchData = useCallback(() => {
+    	fetch("./appointment-data.json")
+    		.then((response) => response.json())
+    		.then((data) => {
+    			setAppointmentList(data);
+    		});
+    }, []);
+    ```
+
+4. useEffect for keeping track of when the fetchData changes
+    ```jsx
+    useEffect(() => {
+    	fetchData();
+    }, [fetchData]);
+    ```
+
+## Delete button functionality
+
+1. Add the onclick event to the delete button
+    ```jsx
+    onClick={() => onDeleteAppointment(appointment.id)}
+    ```
+2. We need to have this function come from the parent component because that's where the data was\
+
+    ```jsx
+    const AppointmentInfo = ({ appointment, onDeleteAppointment }) => {
+        // ...
+    ```
+
+3. We can define what will happen in there
+    ```jsx
+    <AppointmentInfo
+    	// ...
+    	// When this function is called from onClick event
+    	// the appointment.id is passed: onClick={() => onDeleteAppointment(appointment.id)}
+    	// so we can expect that as the arg in this method
+    	onDeleteAppointment={(appointmentId) =>
+    		// using the setter function of the list state
+    		setAppointmentList(
+    			// we only keep the ones whose id doesn't match the selected
+    			appointmentList.filter(
+    				(appointment) => appointment.id !== appointmentId
+    			)
+    		)
+    	}
+    />
+    ```
+4.

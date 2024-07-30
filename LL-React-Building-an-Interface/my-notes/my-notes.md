@@ -107,6 +107,8 @@ Assuming your json is in a variable named `appointmentList`:
 
 ## Dark mode with Tailwind
 
+[Great Fireship tutorial on Tailwind](https://www.youtube.com/watch?v=pfaSUYaSgRo).
+
 **1. Configure Tailwind**
 
 Tailwind CSS provides a darkMode option that you can set to either 'media' or 'class'.

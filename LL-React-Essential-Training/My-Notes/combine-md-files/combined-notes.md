@@ -684,4 +684,59 @@ Custom hook recipes:
 
 # 6. Asynchronous React
 
+[Demo data source from Github](https://api.github.com/users/cansinacarer)
+
+We can have a state to keep the data:
+```jsx
+const [data, setData] = useState(null);
+```
+
+Then use the useEffect call the API:
+```jsx
+  useEffect(() => {
+    fetch(
+      `https://api.github.com/users/moonhighway`
+    )
+      .then((response) => response.json())
+      .then(data => setData(data))
+  }, []); // we don't want any dependencies since we only want to fetch when our app first rendered
+```
+
+## Fetch States
+When fetching data, there are 3 possible states:
+- Loading,
+- Success,
+- Error.
+
+We can have 3 states for these:
+```jsx
+const [data, setData] = useState(null);
+const [error, setError] = useState(null);
+const [loading, setLoading] = useState(null);
+```
+
+Before fetch, we can set loading true, after fetched we can set it to false again. Lastly, we can chain a catch at the end:
+```jsx
+useEffect(() => {
+    setLoading(true);
+    fetch(`https://api.github.com/users/cansinacarer`)
+        .then((response) => response.json())
+        .then(setData)
+        .then(() => setLoading(false)
+        .catch(setError));
+}, []);
+```
+Then we can return different things based on these states:
+```jsx
+if (loading) return <h1>Loading...</h1>;
+if (error) return <pre>{JSON.stringify(error)}</pre>;
+if (!data) return null;
+return (
+    <GithubUser
+    name={data.name}
+    location={data.location}
+    avatar={data.avatar_url}
+    />
+);
+```
 

@@ -1,6 +1,5 @@
 # ⚛️ My React Notes
 
-Main repo where I merged all my React.js notes.
 | Source | Instructor | Course | Folder Name | My Notes |
 | ------ |------------| ------ | ----------- | -- |
 | Linkedin Learning | Eve Porcello | [React.js-Essential-Training from Linkedin Learning](https://www.linkedin.com/learning/react-js-essential-training-14836121/) | LL-React-Essential-Training | [My Notes](LL-React-Essential-Training/My-Notes/combine-md-files/combined-notes.md) |

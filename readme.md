@@ -1,4 +1,4 @@
-# ⚛️ My React Notes
+## ⚛️ My React Notes
 
 | Source | Instructor | Course | Folder Name | My Notes |
 | ------ |------------| ------ | ----------- | -- |

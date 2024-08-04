@@ -4,7 +4,7 @@ Main repo where I merged all my React.js notes.
 | Source | Instructor | Course | Folder Name | My Notes |
 | ------ |------------| ------ | ----------- | -- |
 | Linkedin Learning | Eve Porcello | [React.js-Essential-Training from Linkedin Learning](https://www.linkedin.com/learning/react-js-essential-training-14836121/) | LL-React-Essential-Training | [My Notes](LL-React-Essential-Training\My-Notes\combine-md-files\combined-notes.md) |
-| Linkedin Learning | Ray Villalobos | [React.js: Building an Interface](https://www.linkedin.com/learning/react-js-building-an-interface-8551484?u=2174970) | LL-React-Building-an-Interface | [My Notes](LL-React-Building-an-Interface/my-notes/my-notes.md) |
+| Linkedin Learning | Ray Villalobos | [React.js: Building an Interface](https://www.linkedin.com/learning/react-js-building-an-interface-8551484?u=2174970) | LL-React-Building-an-Interface | [My Notes](LL-React-Building-an-Interface\my-notes\my-notes.md) |
 | Linkedin Learning | Shaun Wassell | [React: Design Patterns](https://www.linkedin.com/learning/react-design-patterns?u=2174970) | LL-React-Design-Patterns | [My Notes](LL-React-Design-Patterns\my-notes\my-notes.md) |
 | Udemy | Maximilian Schwarzmüller | [React - The Complete Guide 2024](https://www.udemy.com/course/react-the-complete-guide-incl-redux/?couponCode=KEEPLEARNING) | React-Udemy-Course-Notes |
 | Linkedin Learning | Shaun Wassell | [React: Authentication](https://www.linkedin.com/learning/react-authentication?u=2174970) | | |

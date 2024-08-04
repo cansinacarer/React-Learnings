@@ -11,23 +11,29 @@ function GithubUser({ name, location, avatar }) {
 }
 
 function App() {
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    fetch(
-      `https://api.github.com/users/cansinacarer`
-    )
-      .then((response) => response.json())
-      .then(setData); // short for .then(data => setData(data))
-  }, []); // we don't want any dependencies since we only want to fetch when our app first rendered
-  if (data)
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(null);
+
+    useEffect(() => {
+        setLoading(true);
+        fetch(`https://api.github.com/users/cansinacarer`)
+            .then((response) => response.json())
+            .then(setData)
+            .then(() => setLoading(false))
+            .catch(error => setError(error));
+    }, []); // we don't want any dependencies since we only want to fetch when our app first rendered
+    
+    if (loading) return <h1>Loading...</h1>;
+    if (error) return <pre>{JSON.stringify(error)}</pre>;
+    if (!data) return null;
     return (
-      <GithubUser
+        <GithubUser
         name={data.name}
         location={data.location}
         avatar={data.avatar_url}
-      />
+        />
     );
-  return <h1>Data</h1>;
 }
 
 export default App;

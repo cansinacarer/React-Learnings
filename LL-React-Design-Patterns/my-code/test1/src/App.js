@@ -1,7 +1,7 @@
 import { SplitScreen } from "./SplitScreen";
 
-const LeftHandComponent = () => {
-    return <h1>Left!</h1>
+const LeftHandComponent = ({name}) => {
+    return <h1>Hello {name}</h1>
 }
 const RightHandComponent = () => {
     return <p>Right!</p>
@@ -9,7 +9,10 @@ const RightHandComponent = () => {
 
 function App() {
   return (
-    <SplitScreen left={LeftHandComponent} right={RightHandComponent} />
+    <SplitScreen>
+        <LeftHandComponent name="Cansin" />
+        <RightHandComponent />
+    </SplitScreen>
   );
 }
 

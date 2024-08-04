@@ -6,4 +6,10 @@ Normally, we'd include the div and styles in the component but with layout compo
 
 > Our components (main content components) shouldn't know or care where they're being displayed.
 
-## Example: Creating a basic split screen
+You want to pass in components as children to a layout component, instead of as props. This allows you to pass props to deeper level children without having to pass it through the middle children. E.g. here, we can pass the name prop directly to LeftHandComponent, without having to pass it to SplitScreen component first.
+```jsx
+<SplitScreen>
+    <LeftHandComponent name="Cansin" />
+    <RightHandComponent />
+</SplitScreen>
+```

@@ -1,12 +1,12 @@
-# 1. Intro
+## 1. Intro
 Chrome Extension: [React Developer Tools](https://chromewebstore.google.com/detail/fmkadmapgofadopljbjfkapdkoienihi)
 
 Quick React Sandbox: [React.new](https://react.new/)
 
-# 2. Intro to React
+## 2. Intro to React
 [React.js-Essential-Training from Linkedin Learning](https://www.linkedin.com/learning/react-js-essential-training-14836121/)
 
-## Adding React to Your Project
+### Adding React to Your Project
 
 1. We could just add the React scripts:
 
@@ -42,7 +42,7 @@ Quick React Sandbox: [React.new](https://react.new/)
 </body>
 ```
 
-## Creating React Elements
+### Creating React Elements
 
 In the code above, we can actually move the parameter to be rendered into its own variable.
 
@@ -55,7 +55,7 @@ let heading = React.createElement(
 ReactDOM.render(heading, document.getElementById("root"));
 ```
 
-## Elements with JSX
+### Elements with JSX
 
 We could write the element to be rendered as jsx, but this wouldn't run in the browser:
 
@@ -103,7 +103,7 @@ ReactDOM.render(
 
 This is not how you would do it in production.
 
-## Dynamic Content in JSX
+### Dynamic Content in JSX
 
 We can inject dynamic content in between JSX tags using `{}` syntax and typing objects, variables, or props in them.
 
@@ -125,8 +125,8 @@ ReactDOM.render(
 ```
 
 
-# 3. React Components
-## Creating a React Component
+## 3. React Components
+### Creating a React Component
 
 A component is just a JS function that returns some JSX.
 
@@ -193,7 +193,7 @@ function App() {
 
 You can build your tree from there by nesting components inside the App component.
 
-## Using props for displaying dynamic data
+### Using props for displaying dynamic data
 
 **Step 1:** Add an argument called props to the component function.
 
@@ -225,7 +225,7 @@ or we could pass JS as a prop:
 <footer year="{new" Date().getFullYear()} />
 ```
 
-### Using an Array as a prop
+#### Using an Array as a prop
 
 If you want to render a list from a passed as an Array:
 
@@ -271,9 +271,9 @@ We'd also need to update the object mapping:
 **We have () around {} because an arrow function can't return an object without wrapping it in ().**
 
 
-# 4. React State in the Component Tree
+## 4. React State in the Component Tree
 
-## Working with a create-react-app project:
+### Working with a create-react-app project:
 
 `src/index.js` is like your `index.html`, it is the entry point to your app.
 
@@ -281,7 +281,7 @@ Components are in their own files, they `export default` the component function 
 
 You run it with `npm start`, you may need to run `npm install` first to install the dependencies from package.json.
 
-## Destructuring the props or any other Object
+### Destructuring the props or any other Object
 
 Instead of using props as the arg for the component function, you can use an object with the keys of the elements from the props:
 
@@ -299,7 +299,7 @@ function App({ cheer, library }) {
 
 Instead of `function App(props)` and `{props.cheer} from {props.library}`.
 
-## Destructuring Arrays
+### Destructuring Arrays
 
 You can desctructure an Array and assign its elements to variables as below:
 
@@ -311,7 +311,7 @@ Then you can use those variables in a component like `<p>{firstCity} and {second
 
 This is used in useState.
 
-## useState Hook
+### useState Hook
 
 **Step 1:** Import useState in the component.
 
@@ -343,7 +343,7 @@ If you want to give it an initial value, you can pass it in useState() as an arg
     <button onClick={toggleEmotion}> <!-- where toggleEmotion() is a function-->
     ```
 
-## useEffect Hook
+### useEffect Hook
 
 Used for side effects that aren't related to a component's render. If all you want to do when a state changes is to update a value in dom, you can just put that value in the component, but it you want to do something else, you can pass that function.
 
@@ -367,7 +367,7 @@ useEffect(() => {
 }, [emotion]);
 ```
 
-## useReducer
+### useReducer
 
 Allows you to take the function that defines how the state is updated in a single place.
 
@@ -421,8 +421,8 @@ export default App;
 ```
 
 
-# 5. Handling Forms
-## Managing Uncontrolled Form Elements with useRef
+## 5. Handling Forms
+### Managing Uncontrolled Form Elements with useRef
 
 Anytime you are using useRef, you are managing form components outside of the state.
 
@@ -502,7 +502,7 @@ export default App;
 
 Unlike useState, where the component will re-render if there is a change, useRef will not re-render. Anytime you see useRef, we are creating an uncontrolled component.
 
-## Managing Controlled Form Elements with useState
+### Managing Controlled Form Elements with useState
 
 Contolled means we are creating state values for the form inputs:
 
@@ -566,7 +566,7 @@ function App() {
 export default App;
 ```
 
-## useState vs useRef
+### useState vs useRef
 
 The difference between the two approach is:
 
@@ -618,7 +618,7 @@ The difference between the two approach is:
             />
             ```
 
-## Building a custom hook
+### Building a custom hook
 
 A custom hook is a function, its name always starts with the word "use".
 
@@ -661,13 +661,13 @@ export default App;
 
 ```
 
-## Form Libraries
+### Form Libraries
 
 They can help with validation, performance optimiziation (reducing re-renders); they abstract away the state management logic...
 - Formik
 - React Hook Form
 
-## Hooks Learned So Far
+### Hooks Learned So Far
 
 -   useState: returns a variable to store data and a setter function.
     -   When tieing a state variable to an input, you need to set up sync in both ways:
@@ -682,7 +682,7 @@ They can help with validation, performance optimiziation (reducing re-renders); 
 Custom hook recipes:
 - https://usehooks.com/
 
-# 6. Asynchronous React
+## 6. Asynchronous React
 
 [Demo data source from Github](https://api.github.com/users/cansinacarer)
 
@@ -702,7 +702,7 @@ Then use the useEffect call the API:
   }, []); // we don't want any dependencies since we only want to fetch when our app first rendered
 ```
 
-## Fetch States
+### Fetch States
 When fetching data, there are 3 possible states:
 - Loading,
 - Success,

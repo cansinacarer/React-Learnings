@@ -1,3 +1,9 @@
+# 1. Intro
+Chrome Extension: [React Developer Tools](https://chromewebstore.google.com/detail/fmkadmapgofadopljbjfkapdkoienihi)
+
+Quick React Sandbox: [React.new](https://react.new/)
+
+# 2. Intro to React
 [React.js-Essential-Training from Linkedin Learning](https://www.linkedin.com/learning/react-js-essential-training-14836121/)
 
 ## Adding React to Your Project
@@ -119,6 +125,7 @@ ReactDOM.render(
 ```
 
 
+# 3. React Components
 ## Creating a React Component
 
 A component is just a JS function that returns some JSX.
@@ -414,7 +421,8 @@ export default App;
 ```
 
 
-# Managing Uncontrolled Form Elements with useRef
+# 5. Handling Forms
+## Managing Uncontrolled Form Elements with useRef
 
 Anytime you are using useRef, you are managing form components outside of the state.
 
@@ -494,7 +502,7 @@ export default App;
 
 Unlike useState, where the component will re-render if there is a change, useRef will not re-render. Anytime you see useRef, we are creating an uncontrolled component.
 
-# Managing Controlled Form Elements with useState
+## Managing Controlled Form Elements with useState
 
 Contolled means we are creating state values for the form inputs:
 
@@ -558,7 +566,7 @@ function App() {
 export default App;
 ```
 
-# useState vs useRef
+## useState vs useRef
 
 The difference between the two approach is:
 
@@ -610,17 +618,56 @@ The difference between the two approach is:
             />
             ```
 
-# Building a custom hook
+## Building a custom hook
 
 A custom hook is a function, its name always starts with the word "use".
 
 When you have a repeatable behavior in your code, you can make it a custom hook.
 
-# Form Libraries
+```jsx
+import "./App.css";
+import { useState } from "react";
+
+function useInput(initialValue) {
+	const [value, setValue] = useState(initialValue);
+	return [
+		{
+			value,
+			onChange: (e) => setValue(e.target.value),
+		},
+		() => setValue(initialValue),
+	];
+}
+
+function App() {
+	const [titleProps, resetTitle] = useInput("");
+	const [colorProps, resetColor] = useState("#000000");
+	const submit = (e) => {
+		e.preventDefault();
+		alert(`${titleProps.value}, ${colorProps.value}`);
+		resetTitle();
+		resetColor();
+	};
+	return (
+		<form onSubmit={submit}>
+			<input {...titleProps} type="text" placeholder="color title..." />
+			<input {...colorProps} type="color" />
+			<button>ADD</button>
+		</form>
+	);
+}
+
+export default App;
+
+```
+
+## Form Libraries
 
 They can help with validation, performance optimiziation (reducing re-renders); they abstract away the state management logic...
+- Formik
+- React Hook Form
 
-# Hooks Learned So Far
+## Hooks Learned So Far
 
 -   useState: returns a variable to store data and a setter function.
     -   When tieing a state variable to an input, you need to set up sync in both ways:
@@ -630,5 +677,11 @@ They can help with validation, performance optimiziation (reducing re-renders); 
 -   useEffect: Allow you to do things when something's value changes.
 -   useReducer:
     [Left at this and then custom hooks.](https://www.linkedin.com/learning/react-js-essential-training-14836121/incorporating-usereducer?resume=false&u=2174970)
+
+
+Custom hook recipes:
+- https://usehooks.com/
+
+# 6. Asynchronous React
 
 

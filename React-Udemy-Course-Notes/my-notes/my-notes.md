@@ -11,10 +11,10 @@
 -   [ ] React state and events (section 4),
 
 ## 1. Getting Started
-See [my handwritten notes.](React-Udemy-Course-Notes/my-notes/handwritten-react-notes.pdf)
+See [my handwritten notes.](handwritten-react-notes.pdf)
 
 ## 2. JavaScript Refresher
-See [my handwritten notes.](React-Udemy-Course-Notes/my-notes/handwritten-react-notes.pdf)
+See [my handwritten notes.](handwritten-react-notes.pdf)
 
 ## 3. React Essentials: Components, JSX, State, Props
-See [my handwritten notes.](React-Udemy-Course-Notes/my-notes/handwritten-react-notes.pdf)
+See [my handwritten notes.](handwritten-react-notes.pdf)

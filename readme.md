@@ -11,7 +11,7 @@ Main repo where I merged all my React.js notes.
     -   [x] Fetching and working with data,
     -   [x] Handling forms,
 -   [x] React Router,
--   [x] Testing & development,
+-   [x] Unit testing with Jest,
 -   [x] Using Tailwind,
 -   [ ] Optimizations,
     -   [ ] Design patterns,

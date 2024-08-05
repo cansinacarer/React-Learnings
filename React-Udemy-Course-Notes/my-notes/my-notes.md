@@ -7,7 +7,14 @@
 ### Subjects I'm Learning:
 
 -   [x] Modern JavaScript with arrow functions, spread & rest operators, and more (section 2).
--   [x] React components, props ([section 3](https://github.com/cansinacarer/React-Udemy-Course-Notes/tree/section3)),
+-   [x] React components, props (section 3),
 -   [ ] React state and events (section 4),
 
-## 1. Getting started
+## 1. Getting Started
+See [my handwritten notes.](React-Udemy-Course-Notes/my-notes/handwritten-react-notes.pdf)
+
+## 2. JavaScript Refresher
+See [my handwritten notes.](React-Udemy-Course-Notes/my-notes/handwritten-react-notes.pdf)
+
+## 3. React Essentials: Components, JSX, State, Props
+See [my handwritten notes.](React-Udemy-Course-Notes/my-notes/handwritten-react-notes.pdf)

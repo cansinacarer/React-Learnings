@@ -20,9 +20,7 @@ def generate_table_of_contents(temp_file, output_file):
     for line in lines:
         if line.startswith("## "):
             heading = line.strip("#").strip()
-            table_of_contents += (
-                f"[{heading}](#{heading.lower().replace(' ', '-').replace('.', '-')})\n\n"
-            )
+            table_of_contents += f"[{heading}](#user-content-{heading.lower().replace('. ', '-').replace(' ', '-')})\n\n"
 
     with open(output_file, "w", encoding="utf-8") as outfile:
         outfile.write("# Table of Contents\n\n")

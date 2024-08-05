@@ -1,20 +1,20 @@
 # Table of Contents
 
-[1. Intro](#1--intro)
+[1. Intro](#user-content-1-intro)
 
-[2. Intro to React](#2--intro-to-react)
+[2. Intro to React](#user-content-2-intro-to-react)
 
-[3. React Components](#3--react-components)
+[3. React Components](#user-content-3-react-components)
 
-[4. React State in the Component Tree](#4--react-state-in-the-component-tree)
+[4. React State in the Component Tree](#user-content-4-react-state-in-the-component-tree)
 
-[5. Handling Forms](#5--handling-forms)
+[5. Handling Forms](#user-content-5-handling-forms)
 
-[6. Asynchronous React](#6--asynchronous-react)
+[6. Asynchronous React](#user-content-6-asynchronous-react)
 
-[7. React Router](#7--react-router)
+[7. React Router](#user-content-7-react-router)
 
-[8. React Testing and Deployment](#8--react-testing-and-deployment)
+[8. React Testing and Deployment](#user-content-8-react-testing-and-deployment)
 
 
 ## Contents

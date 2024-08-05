@@ -1,3 +1,16 @@
+# Table of Contents
+
+- [1. Intro](#1.-intro)
+- [2. Intro to React](#2.-intro-to-react)
+- [3. React Components](#3.-react-components)
+- [4. React State in the Component Tree](#4.-react-state-in-the-component-tree)
+- [5. Handling Forms](#5.-handling-forms)
+- [6. Asynchronous React](#6.-asynchronous-react)
+- [7. React Router](#7.-react-router)
+- [8. React Testing and Deployment](#8.-react-testing-and-deployment)
+
+## Contents
+
 ## 1. Intro
 Chrome Extension: [React Developer Tools](https://chromewebstore.google.com/detail/fmkadmapgofadopljbjfkapdkoienihi)
 
@@ -739,4 +752,172 @@ return (
     />
 );
 ```
+
+## 7. React Router
+You import these:
+```jsx
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+```
+
+and use them as below, this using:
+- Link component for your links
+- Routes and Route to define the paths,
+- BrowserRouter (imported as Router below) to wrap everything.
+
+```jsx
+<Router>
+    <div className="App">
+    <header className="App-header">
+        <nav>
+            <ul>
+                <li>
+                    <Link to="/" draggable={false}>Home</Link>
+                </li>
+                <li>
+                    <Link to="/about" draggable={false}>About</Link>
+                </li>
+            </ul>
+        </nav>
+        <Routes>
+            <Route path="/about" element={<About />} />
+            <Route path="/" element={<Home />} />
+        </Routes>
+    </header>
+    </div>
+</Router>
+```
+### Child pages
+Say we want to have a about/history page from the component below.
+```jsx
+export function History() {
+    return(
+        <div>
+            <h1>Our History</h1>
+        </div>
+    )
+}
+```
+
+1. We'd put another Route for history inside the About Route:
+   Note that you don't put a slash in the path for `history`
+    ```jsx
+    <Route path="/about" element={<About />}>
+        <Route
+            path="history"
+            element={<History />}
+        />
+    </Route>
+    ```
+
+2. We'd also need to decide where in the About component will the child component be displayed.
+   For this, we import and use the Outlet component. We place it where we want the Child to be rendered.
+   ```jsx
+   import {Link, Outlet} from "react-router-dom";
+   // ...
+   export function About() {
+    return (
+        <>
+            <nav>
+            // ...
+            </nav>
+            <h1>About</h1>
+            <Outlet />
+        </h1>
+    )
+   }
+
+
+## 8. React Testing and Deployment
+
+### Writing unit tests for Jest
+
+Create-react-app comes with Jest for testing. When you run `npm test`, it runs your tests.
+
+This will run the tests you place in `*.test.js` files.
+
+1. Import the function you want to test:
+   ```jsx
+   import {timesTwo} from "./functions";
+   ```
+2. Use the `test()`, `expect()`, and `toBe()`, which takes args for a name and a function as below.
+   ```jsx
+   test("Multiplies by two", () => {
+       expect(timesTwo(4).toBe(8));
+   });
+   ```
+There are many other "matchers" like toBe(), see the [full list](https://jestjs.io/docs/using-matchers). E.g:
+```js
+expect(a + b).not.toBe(0);
+expect(n).toBeNull();
+expect(n).toBeDefined();
+expect(n).not.toBeUndefined();
+expect(n).not.toBeTruthy();
+expect(n).toBeFalsy();
+expect(value).toBeGreaterThan(3);
+expect(value).toBeGreaterThanOrEqual(3.5);
+expect(value).toBeLessThan(5);
+expect(value).toBeLessThanOrEqual(4.5);
+expect(value).toEqual(4);
+```
+
+#### Testing Rendering with React Testing Library
+
+You can also check whether the components render as expected, without manually looking at them, using `@testing-library`.
+
+```jsx
+import {render} from "@testing-library/react";
+import { Star } from "./Star"; // importing the component to be tested
+
+test("renders an h1", () => {
+    const {getByText} = render(<Star />); // query
+    const h1 = getByText(/Cool Star/); // expected content
+    expect(h1).toHaveTextContent("Cool Star");
+});
+```
+
+Here the `render` function takes a React component, in this case `<Star />`, and returns an object with various methods and properties that allow us to interact with the rendered component in our tests. The object returned by `render` is being destructured, and we are specifically extracting the `getByText` method from it.  The `getByText` method is used to query the rendered component and find an element that contains the specified text. It uses a regular expression `(/Cool Star/)` to match the expected content.
+
+The next line, `const h1 = getByText(/Cool Star/);`, is using the getByText method to find an element within the rendered component that contains the text "Cool Star". The result of this query is being assigned to the variable h1.
+
+#### Testing Events
+
+Say we want to test clicking on this checkbox and seeing if the `checked` value changes.
+
+```jsx
+import { useReducer } from "react";
+
+export function Checkbox() {
+    const [checked, setChecked] = useReducer(
+        checked = !checked, // return whatever the opposite of checked is
+        false // initial value
+    );
+    return (
+        <>
+            <label htmlFor="checkbox">
+                {checked ? "checked" : "not checked"}
+            </label>
+            <input type="checkbox" id="checkbox" value={checked} onChange={setChecked} />
+        </>
+    );
+}
+```
+
+We fire click event and test:
+
+```jsx
+import {render, fireEvent} from "@testing-library/react";
+test("Selecting the checkbox should change the value of checked to true.", () => {
+    const {getByLabelText} = render(<Checkbox />);
+    const checkbox = getByLabelText(/not checked/i); // i prevents case sensitivity
+    
+    // Fire the event of clicking on this checkbox
+    fireEvent.click(checkbox);
+
+    // Our expectation after click
+    expect(checkbox.checked).toEqual(true)
+});
+```
+
+### Deploying to Netlify
+You can either connect your repo, or upload a built version of your app. You can build it with `npm run build`, then upload the generated build folder.
 

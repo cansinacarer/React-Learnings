@@ -4,7 +4,7 @@ Main repo where I merged all my React.js notes.
 
 ### To learn:
 
--   [x] Modern JavaScript: arrow functions, spread & rest operators,
+-   [x] Modern (ES6) JavaScript: arrow functions, spread & rest operators,
 -   [x] React components, props, passing props around,
 -   [x] React state and events,
 -   [x] Other common hooks (e.g. useReducer, useRef, useEffect),

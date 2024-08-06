@@ -9,10 +9,103 @@
 See [my handwritten notes](handwritten-react-notes.pdf).
 
 ## 2. JavaScript Refresher
-See [my handwritten notes](handwritten-react-notes.pdf).
+Some of my notes are in [handwritten notes](handwritten-react-notes.pdf).
+
+To the `<script></script>` tag, you can add these attributes
+- `defer`: Scripts with defer are downloaded asynchronously while the HTML parsing continues. They execute after the HTML is parsed but before the DOMContentLoaded event fires.
+- `type="module"`: This allows you to import stuff between modules.
+
+In a React project, you'll usually use a build process, so not applicable.
+- This also means the code you write is not the code executed in the browser. The built version converts, bundles and minifies it.
+
+### import & export
+You use `export` keyword before a definition to make that expression available for import.
+
+Then you import it:
+```jsx
+import {appointment} from "./appointment.js" // in the same folder
+```
+or if you want to use it with a different name:
+```jsx
+import {appointment as apt} from "./appointment.js"
+```
+In react projects, you can skip the `.js`, the build process understands that.
+
+#### export default
+If you have a default export in the module like this:
+```jsx
+export default "someValue";
+```
+
+It doesn't have a name in the module, so
+- You give it a name while importing,
+- You don't need braces (`{}`) around the variable name:
+```jsx
+import myVariable from "./otherModule"
+```
+
+#### Importing multiple things
+Either:
+```jsx
+import {myVariable, yourVariable} from "./utils.js";
+```
+
+Or you can define an object while importing, and call the variables from that object:
+```jsx
+import * as utils from "./utils.js";
+
+console.log(utils.myVariable)
+```
+
+#### Different ways to export a component
+Function can be named or anonymous, arrow or ES5. Anonymous function needs to be exported immediately in the line it is defined.
+
+1. You can have an anonymous function with export default in one line:
+   ```jsx
+    export default () => {
+        return(
+            <p>Test component</p>
+        );
+    }
+   ```
+   You'd import this component with whatever name you want:
+   ```jsx
+    import Whatever from "./test.js";
+   ```
+2. You can have a named arrow function and `export default` at the end:
+   ```jsx
+    const Whatever = () => {
+        return(
+            <p>Test component</p>
+        );
+    };
+    export default Whatever;
+   ```
+   You could still import this component with whatever name you want, but good practice to match them:
+   ```jsx
+    import Whatever from "./test.js";
+   ```
+3. You can define a function old school and do either of the above, named or anonymous:
+   ```jsx
+    function Whatever() {
+        return(
+            <p>Test component</p>
+        );
+    };
+    export default Whatever;
+   ```
+    or
+   ```jsx
+    export default function () {
+        return(
+            <p>Test component</p>
+        );
+    };
+   ```
+
 
 ## 3. React Essentials: Components, JSX, State, Props
-See [my handwritten notes](handwritten-react-notes.pdf).
+Some of my notes are in [handwritten notes](handwritten-react-notes.pdf).
 
 When you have props passed to a component like this:
 ```jsx

@@ -103,6 +103,72 @@ Function can be named or anonymous, arrow or ES5. Anonymous function needs to be
     };
    ```
 
+### Arrow function nuances
+If you function takes exactly one parameter, you can omit the first set of parentheses.
+```jsx
+// Instead of
+(number) => { ... }
+
+// you could write
+number => { ... }
+```
+
+If your function has no logic other than a return statement (not even a single-liner if statement), you can omit the return key and the braces (can't omit just one).
+```jsx
+// Instead of
+number => { 
+  return number * 3;
+}
+// you could write
+number => number * 3;
+```
+
+If you are just returning an object, the braces will be interpreted as if they are for function definition. So you need to wrap the object in parentheses.
+```jsx
+number => ({ age: number });
+```
+
+### Objects
+Objects can also contain functions:
+```jsx
+const  user = {
+    name: "Cansin",
+    age: 90,
+    greet() {
+        console.log("Hello!");
+        // You can also access the properties with this
+        console.log(this.age);
+    }
+};
+// can be called like any other item
+user.greet();
+```
+
+Classes should start with a capital letter:
+```jsx
+class User {
+    // Like __init__ in python
+    constructor(name, age) {
+        // store the received parameters in the properties of this object
+        // similar to of self.age in python
+        this.age = age;
+    }
+
+    greet() {
+        console.log("Hello!");
+    }
+}
+```
+
+You instantiate with the new Keyword (didn't need it in Python):
+```jsx
+const user1 = new User("Cansin", 75);
+```
+
+
+
+
+
 
 ## 3. React Essentials: Components, JSX, State, Props
 Some of my notes are in [handwritten notes](handwritten-react-notes.pdf).

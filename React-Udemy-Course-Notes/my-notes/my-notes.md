@@ -299,9 +299,9 @@ You can't edit primitives. In a variable, you don't store the value, you store t
 
 E.g. When you assign new value to a string variable, you throw away the old value and assign the new value.
 
-Objects (also arrays which is an object) are reference values, they can be mutated. 
+Objects (also arrays which are objects) are reference values, they can be mutated. 
 
-E.g.when you use the push() method, js reaches into memory and adds this new item to that existing array. Address doesn't change.
+E.g. When you use the push() method, js reaches into memory and adds this new item to that existing array. Address doesn't change.
 ```js
 const hobbies = ['Sports', 'Cooking'];
 hobbies.push('Working');

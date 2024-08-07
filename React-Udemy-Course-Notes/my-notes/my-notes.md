@@ -165,9 +165,149 @@ You instantiate with the new Keyword (didn't need it in Python):
 const user1 = new User("Cansin", 75);
 ```
 
+### Array Methods
 
+#### findIndex()
+```js
+hobbies = ['Reading', 'Coding', 'Gaming', 'Traveling', 'Cooking'];
 
+hobbies.findIndex((item)=>{
+    return item === 'Coding'
+}); // returns 2
+```
+`findIndex` uses the function (with its argument as item) you pass to determine whether an element in the array satisfies the condition or not. The function you pass should return true if the element satisfies the condition, and false otherwise.
 
+If multiple elements match the criteria, you only get the index of the first match.
+
+#### map()
+Allows you to transform every item in an array to another item. It takes a function, you define what happens to each item in that function. It returns the resulting items as an array.
+```js
+hobbies.map((item)=> item + `!`)
+```
+
+### Destructuring
+From a list:
+```js
+const [mostImportantHobby, , thirdHobby] = hobbies
+console.log(thirdHobby) // 'Gaming'
+```
+
+From an object (note that we use {} this time):
+```js
+const user = {
+    name: 'Cansin',
+    age: 412
+};
+
+const {name, age} = user
+console.log(name) // 'Cansin'
+```
+
+In the function args:
+```js
+function storeOrder({id, currency}) { // destructuring
+  localStorage.setItem('id', id);
+  localStorage.setItem('currency', currency);
+}
+```
+... instead of:
+```js
+function storeOrder(order) {
+  localStorage.setItem('id', order.id);
+  localStorage.setItem('currency', order.currency);
+}
+```
+You pass it a single object either way:
+```jsx
+storeOrder({id: 5, currency: 'USD', amount: 15.99}); // one argument / value!
+```
+
+### Spread Operator
+For carrying over the elements of an array or an object:
+```js
+mergedHobbies = [...hobbies, ...newHobbies, "Flying"] // ...hobbies brings over the elements from hobbies
+```
+const extendedUser = {
+    ...user,
+    isAdmin: true,
+}
+
+### Control structures
+
+```js
+// similar to `for item in list` from Python
+for (const hobby of hobbies) {
+    console.log(hobby)
+}
+```
+
+### Manipulating the DOM
+In React, we don't usually reach out to the DOM elements to manipulate them directly. 
+```js
+const list = document.querySelector("ul");
+list.remove()
+```
+
+### Using Functions as Values
+When you are passing a named function like these, to another function, you don't use () next to the function name:
+```js
+function handleTimeOut() {
+    console.log('Timed out!');
+}
+handleTimeOut2 = () => {
+    console.log('Timed out again!');
+}
+setTimeout(handleTimeOut, 2000);
+```
+If I did `setTimeout(handleTimeOut(), 2000);` the inner function would run first and the returned value (if any) would be passed.
+
+The functions to which we pass other functions as args are defined to expect functions as args:
+```js
+function greeter(greeterFn) {
+    greeterFn();
+}
+
+greeter(() => console.log('Hi!'));
+```
+
+### Defining functions inside functions
+
+```js
+function init() {
+    // greet() is scoped to the init function, can't call from outside
+    //just like a variable inside init()
+    function greet() {
+        console.log('Hi!');
+    }
+}
+```
+
+### Reference vs. Primitive Values
+
+You can't edit primitives. In a variable, you don't store the value, you store the address of that value in memory.
+
+E.g. When you assign new value to a string variable, you throw away the old value and assign the new value.
+
+Objects (also arrays which is an object) are reference values, they can be mutated. 
+
+E.g.when you use the push() method, js reaches into memory and adds this new item to that existing array. Address doesn't change.
+```js
+const hobbies = ['Sports', 'Cooking'];
+hobbies.push('Working');
+console.log(hobbies);
+// ['Sports', 'Cooking', 'Working']
+```
+
+This is why, even though hobbies are defined with `const`, we are able to change its elements. Because, `const` doesn't mean the value can't be edited but it means the variable can't be overwritten.
+
+If I tried to reassign hobbies, I'd get an error:
+```js
+hobbies = []; // results in error
+```
+
+The **spread operator** is extremely useful for cloning arrays and objects. Since both are reference types (and not primitives), copying them safely (i.e. preventing future mutation of the copied original) can be tricky. With the spread operator you have an easy way of creating a (shallow!) clone of the object or array. 
+
+[Course notes summarizing Chapter 2](../course-notes/ch2-next-gen-js-summary.pdf).
 
 
 ## 3. React Essentials: Components, JSX, State, Props

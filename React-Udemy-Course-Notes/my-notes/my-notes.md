@@ -309,7 +309,7 @@ console.log(hobbies);
 // ['Sports', 'Cooking', 'Working']
 ```
 
-This is why, even though hobbies are defined with `const`, we are able to change its elements. Because, `const` doesn't mean the value can't be edited but it means the variable can't be overwritten.
+This is why, even though hobbies are defined with `const`, we are able to change their elements. Because, `const` doesn't mean the value can't be edited but it means the variable can't be overwritten.
 
 If I tried to reassign hobbies, I'd get an error:
 ```js

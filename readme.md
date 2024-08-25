@@ -21,10 +21,10 @@ Main repo where I merged all my React.js notes.
     -   [ ] Custom hooks,
     -   [ ] State batching,
     -   [ ] Code splitting,
--   [ ] Server-Side rendering,
+-   [x] Server-Side rendering,
 -   [ ] Next.js,
--   [ ] Redux,
--   [ ] Typescript,
+-   [x] Redux,
+-   [x] Typescript,
 -   [ ] React native.
 
 ### My notes from courses:
